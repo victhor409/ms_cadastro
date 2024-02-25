@@ -1,0 +1,5 @@
+package com.example.model.entities.repository;
+
+public interface ContatosDao {
+
+}

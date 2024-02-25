@@ -1,0 +1,16 @@
+spring.datasource.url=jdbc:postgresql://localhost:5432/cadastro
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+
+# Configuração para gerar os scripts SQL
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.show-sql=true
+
+# Configuração para gerar o arquivo com os scripts SQL
+spring.jpa.properties.javax.persistence.schema-generation.scripts.action=create
+spring.jpa.properties.javax.persistence.schema-generation.scripts.create-target=criar_script.sql

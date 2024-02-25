@@ -1,0 +1,23 @@
+package com.example.model.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.model.entities.Contatos;
+import com.example.model.entities.repository.ContatosDao;
+
+@Service
+public class ContatosService {
+
+	@Autowired
+	private ContatosDao dao;
+	
+	
+	
+	public List<Contatos> findAll(){
+		
+	}
+	
+}

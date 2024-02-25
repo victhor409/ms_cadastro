@@ -1,0 +1,62 @@
+package com.example.model.service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.model.dto.ContatoDTO;
+import com.example.model.entities.Contatos;
+import com.example.model.entities.repository.ContatosDao;
+
+@Service
+public class ContatosService {
+
+	@Autowired
+	private ContatosDao dao;
+	
+	
+	
+	public List<ContatoDTO> findAll(){
+		
+		List<Contatos> list = dao.findAll();
+		return list.stream().map(x -> new ContatoDTO(x)).collect(Collectors.toList());
+	}
+	
+	public ContatoDTO salvarContato(ContatoDTO dto) {
+		
+		Contatos contato = new Contatos();
+		
+		contato.setId(dto.getId());
+		contato.setDocumento(dto.getDocumento());
+		contato.setEmail(dto.getEmail());
+		contato.setNome(dto.getNome());
+		contato.setTelefone(dto.getTelefone());
+		
+		contato = dao.save(contato);
+		
+		return new ContatoDTO(contato);
+	}
+	
+	public Optional<Contatos> findById(Long id){
+		Optional<Contatos> findbyId = dao.findById(id);
+		return findbyId;
+	}
+	
+	public ContatoDTO updateContato(ContatoDTO dto) {
+		Optional<Contatos> contatoAntigo = findById(dto.getId());
+		
+		if(contatoAntigo.isPresent()) {
+			
+			Contatos novoContato = new Contatos();
+			contatoAntigo.get();
+			
+			novoContato.setDocumento(contatoAntigo.getD);
+			
+		}
+		
+	}
+	
+}
